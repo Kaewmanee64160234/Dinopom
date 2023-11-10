@@ -62,25 +62,20 @@ window.onload = function () {
 
   requestAnimationFrame(update);
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
-  document.addEventListener("keydown", moveDino);
-  document.addEventListener("click", moveDino);
-  document.addEventListener("touchstart", moveDino);
+
+    window.addEventListener("keydown", moveDino);
+    window.addEventListener("touchstart", moveDino);
+    window.addEventListener("click", moveDino);
+
+
+
 
 };
 
 function update() {
   requestAnimationFrame(update);
   if (gameOver) {
-    bool = confirm("Game Over! Play again?");
-    if (bool) {
-      gameOver = false;
-      location.reload();
-      return
-    } if(!bool) {
-      gameOver = true;
-      window.close();
-      return;
-    }
+    return;
 
   }
   context.clearRect(0, 0, board.width, board.height);
