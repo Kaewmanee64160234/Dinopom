@@ -67,6 +67,7 @@ window.onload = function () {
     document.addEventListener("touchend", moveDino); 
     document.addEventListener("keyup", moveDino);
     document.addEventListener("click", moveDino);
+    document.addEventListener("touchstart", moveDino);
   
 
 
@@ -75,17 +76,7 @@ window.onload = function () {
 
 
 
-function handleTouch(e) {
-  console.log("touch");
-  if (gameOver) {
-      return;
-  }
-  const touch = e.touches[0];
 
-  if (touch.clientY < boardHeight / 2 && dino.y === dinoY) {
-      velocityY = -10;
-  }
-}
 
 
 function update() {
@@ -135,7 +126,7 @@ function moveDino(e) {
     return;
   }
 
-  if ((e.code == "Space" || e.code == "ArrowUp" || e.type== "touchend" || e.type == "click") && dino.y == dinoY) {
+  if ((e.code == "Space" || e.code == "ArrowUp" || e.type== "touchend" || e.type == "click" || e.type == "touchstart") && dino.y == dinoY) {
     //jump
     velocityY = -10;
   } else if (e.code == "ArrowDown" && dino.y == dinoY) {
