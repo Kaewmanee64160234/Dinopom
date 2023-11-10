@@ -63,13 +63,30 @@ window.onload = function () {
   requestAnimationFrame(update);
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
 
-  document.addEventListener("touchend", moveDino);
-  document.addEventListener("keyup", moveDino);
-  document.addEventListener("click", moveDino);
+
+    document.addEventListener("touchend", moveDino); 
+    document.addEventListener("keyup", moveDino);
+    document.addEventListener("click", moveDino);
+  
 
 
 
 };
+
+
+
+function handleTouch(e) {
+  console.log("touch");
+  if (gameOver) {
+      return;
+  }
+  const touch = e.touches[0];
+
+  if (touch.clientY < boardHeight / 2 && dino.y === dinoY) {
+      velocityY = -10;
+  }
+}
+
 
 function update() {
   requestAnimationFrame(update);
@@ -81,7 +98,7 @@ function update() {
 
   //dino
   velocityY += gravity;
-  dino.y = Math.min(dino.y + velocityY, dinoY); //apply gravity to current dino.y, making sure it doesn't exceed the ground
+  dino.y = Math.min(dino.y + velocityY, dinoY); 
   context.drawImage(dinoImage, dino.x, dino.y, dino.width, dino.height);
 
   //cactus
@@ -118,7 +135,7 @@ function moveDino(e) {
     return;
   }
 
-  if ((e.code == "Space" || e.code == "ArrowUp") && dino.y == dinoY) {
+  if ((e.code == "Space" || e.code == "ArrowUp" || e.type== "touchend" || e.type == "click") && dino.y == dinoY) {
     //jump
     velocityY = -10;
   } else if (e.code == "ArrowDown" && dino.y == dinoY) {
