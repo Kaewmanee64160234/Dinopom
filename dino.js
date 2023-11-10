@@ -64,10 +64,9 @@ window.onload = function () {
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
 
 
-    document.addEventListener("touchend", moveDino); 
+    document.addEventListener("touchstart", moveDino); 
     document.addEventListener("keyup", moveDino);
     document.addEventListener("click", moveDino);
-    document.addEventListener("touchstart", moveDino);
   
 
 
@@ -126,7 +125,10 @@ function moveDino(e) {
     return;
   }
 
-  if ((e.code == "Space" || e.code == "ArrowUp" || e.type== "touchend" || e.type == "click" || e.type == "touchstart") && dino.y == dinoY) {
+  if (
+    (e.code == "Space" || e.code == "ArrowUp" || e.type == "touchend" || e.type == "click" || e.type == "touchstart") &&
+    dino.y === dinoY
+)  {
     //jump
     velocityY = -10;
   } else if (e.code == "ArrowDown" && dino.y == dinoY) {
