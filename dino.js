@@ -63,10 +63,9 @@ window.onload = function () {
   requestAnimationFrame(update);
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
 
-    window.addEventListener("keydown", moveDino);
-    window.addEventListener("touchstart", moveDino);
-    window.addEventListener("click", moveDino);
-
+  document.addEventListener("touchend", moveDino);
+  document.addEventListener("keyup", moveDino);
+  document.addEventListener("click", moveDino);
 
 
 
@@ -114,6 +113,7 @@ function update() {
 }
 
 function moveDino(e) {
+  console.log(e);
   if (gameOver) {
     return;
   }
