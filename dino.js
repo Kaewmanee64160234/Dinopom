@@ -1,10 +1,10 @@
 let board;
-let boardWidth = 800;
-let boardHeight = 400;
+let boardWidth = 750;
+let boardHeight = 250;
 let context;
 let dino;
-let dinoWidth = 70;
-let dinoHeight = 75;
+let dinoWidth = 88;
+let dinoHeight = 94;
 let dinoX = 50;
 let dinoY = boardHeight - dinoHeight;
 let dinoImage;
